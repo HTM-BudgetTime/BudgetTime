@@ -7,8 +7,10 @@ input[type=text],input[type=password],input[type=number], select, textarea {
   resize: vertical;
 }
 
-.body{background-image: url(../img/background.JPG);
-    background-size: auto;
+.body {
+  background-image: url(../img/background.JPG);
+  background-size: auto;
+}
 
 input[type=text], select, textarea {
   width: 100%;
