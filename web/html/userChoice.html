@@ -1,0 +1,46 @@
+<!Doctype html>
+<html lang ="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+      <!-- Link to external CSS file -->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../css/login_page.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+      <script>
+        var slider = document.getElementById("sleep");
+        var output = document.getElementById("sleepVar");
+        output.innerHTML = slider.value;
+
+        slider.oninput = function() {
+          output.innerHTML = this.value;
+        }
+      </script>
+    </head>
+<body class="body">
+
+  <div class="container">
+    <form class="" action="#" method="post">
+      <label for="hoursToCommit"><b>Hours to Commit</b></label>
+      <input type="number" name="hoursToCommit" value="0">
+
+      <label for="usrSleep"><b>Sleep</b></label>
+      <input type="number" name="sleep" id="usrSleep" value="0">
+
+      <label for="usrStudy"><b>Study</b></label>
+      <input type="number" name="study" id="usrStudy" value="0">
+
+      <label for="entertainment"><b>Entertainment</b></label>
+      <input type="number" name="ntertainment" id="usrEntertainment" value="0">
+      <button type="button" name="Add Extra Fields"> Add Extra Fields </button>
+    </form>
+  </div>
+
+
+</body>
+</html>
