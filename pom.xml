@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>HTM-BudgetTime</groupId>
+    <artifactId>BudgetTime</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+
+        <java.version>1.8</java.version>
+
+        <javax.servlet.jsp.jsp-api.version>2.2</javax.servlet.jsp.jsp-api.version>
+        <javax.servlet.jstl.version>1.2</javax.servlet.jstl.version>
+        <javax.servlet.servlet-api.version>2.5</javax.servlet.servlet-api.version>
+        <org.glassfish.web.javax.servlet.jsp.jstl.version>1.2.5</org.glassfish.web.javax.servlet.jsp.jstl.version>
+
+
+        <org.apache.maven.plugins.maven-war-plugin.version>2.2</org.apache.maven.plugins.maven-war-plugin.version>
+        <org.apache.maven.plugins.maven.compiler.plugin.version>3.6.1</org.apache.maven.plugins.maven.compiler.plugin.version>
+    </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${org.apache.maven.plugins.maven.compiler.plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                </configuration>
+            </plugin>
+
+            <!-- Maven WAR plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${org.apache.maven.plugins.maven-war-plugin.version}</version>
+                <configuration>
+                    <attachClasses>true</attachClasses>
+                    <webResources>
+                        <resource>
+                            <!--<directory>src/main/webapp</directory>-->
+                            <directory>web</directory>
+                            <filtering>true</filtering>
+                        </resource>
+                    </webResources>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <!-- Javax Servlet API -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${javax.servlet.servlet-api.version}</version>
+        </dependency>
+
+        <!-- Javax Servlet JSP API -->
+        <dependency>
+            <groupId>javax.servlet.jsp</groupId>
+            <artifactId>jsp-api</artifactId>
+            <version>${javax.servlet.jsp.jsp-api.version}</version>
+        </dependency>
+
+
+        <!-- Glassfish Servlet JSTL -->
+        <!-- Added updated jstl version per dependency-check vulnerability scanner reporting issues re: v1.2 -->
+        <!-- https://mvnrepository.com/artifact/org.glassfish.web/javax.servlet.jsp.jstl -->
+        <dependency>
+            <groupId>org.glassfish.web</groupId>
+            <artifactId>javax.servlet.jsp.jstl</artifactId>
+            <version>${org.glassfish.web.javax.servlet.jsp.jstl.version}</version>
+        </dependency>
+
+    </dependencies>
+</project>
