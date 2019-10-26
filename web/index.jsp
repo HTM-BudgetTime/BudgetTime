@@ -12,6 +12,6 @@
 </head>
 <body>
 <h1>Test content</h1>
-<p>foo bar baz</p>
+<p><a href="http://localhost:8080/BudgetTime/main/index">http://localhost:8080/BudgetTime/main/index</a></p>
 </body>
 </html>
