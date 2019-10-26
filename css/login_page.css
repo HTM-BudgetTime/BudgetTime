@@ -1,3 +1,7 @@
+.body{background-image: url(../img/background.JPG);
+    background-size: auto;
+}
+
 input[type=text], select, textarea {
   width: 100%;
   padding: 12px;
