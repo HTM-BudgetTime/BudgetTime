@@ -10,30 +10,25 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-public class MainServlet extends HttpServlet {
+public class ApiServlet extends HttpServlet {
 
     @Override
     protected void doGet(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doGet");
         processRequest(request, response);
     }
 
     @Override
     protected void doPost(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost");
         processRequest(request, response);
     }
 
     @Override
     public void init() {
-        System.out.println("init");
-        System.out.println("TESTING");
     }
 
 
     private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("processRequest");
-        response.setContentType(ServletUtil.CONTENT_TYPE_HTML);
+        response.setContentType(ServletUtil.CONTENT_TYPE_JSON);
 
         RequestDispatcher dispatcher = null;
 
@@ -42,14 +37,8 @@ public class MainServlet extends HttpServlet {
 
         System.out.println("action = " + action);
 
-        if (action.equals("/index")) {
+        if (action.equals("/users")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
-        } else if (action.equals("/register")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
-        } else if (action.equals("/login")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
-        } else if (action.equals("/userChoice")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");
         } else {
             response.setContentType(ServletUtil.CONTENT_TYPE_HTML);
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
