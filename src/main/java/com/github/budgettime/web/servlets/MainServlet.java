@@ -48,6 +48,13 @@ public class MainServlet extends HttpServlet {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
         } else if (action.equals("/login")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
+        } else if (action.equals("/doLogon")) {
+            String username = request.getParameter("username");
+            String password = request.getParameter("Password");
+
+            writer.print("Username = " + username + "<br/>\n");
+            writer.print("Password = " + password + "<br/>\n");
+
         } else if (action.equals("/userChoice")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");
         } else {
