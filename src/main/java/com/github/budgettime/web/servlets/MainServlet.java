@@ -46,6 +46,8 @@ public class MainServlet extends HttpServlet {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
         } else if (action.equals("/register")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
+        } else if (action.equals("/mainData")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/mainData.html");
         } else if (action.equals("/login")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
         } else if (action.equals("/doLogon")) {
