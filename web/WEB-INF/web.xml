@@ -14,4 +14,14 @@
         <url-pattern>/main/*</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>API_Servlet</servlet-name>
+        <servlet-class>com.github.budgettime.web.servlets.ApiServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>API_Servlet</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
 </web-app>
