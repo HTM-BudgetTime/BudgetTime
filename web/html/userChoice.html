@@ -13,7 +13,16 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
       <script>
-        
+      var total=24;
+      var sleep= document.getElementById("usrSleep")
+      var study= document.getElementById("usrStudy")
+      var entertainment= document.getElementById("usrEntertainment")
+      var actual = sleep + study + entertainment ;
+      if (actual > total)
+      {
+        alert("no!")
+      }
+
       </script>
     </head>
 <body class="body">
@@ -31,7 +40,7 @@
 
       <label for="entertainment"><b>Entertainment</b></label>
       <input type="number" name="ntertainment" id="usrEntertainment" value="0">
-      <button type="button" name="Add Extra Fields"> Add Extra Fields </button>
+      <button type="button" name="Add Extra Fields" id="newFields"> Add Extra Fields </button>
     </form>
   </div>
 
