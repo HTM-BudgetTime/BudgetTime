@@ -45,10 +45,16 @@ public class MainServlet extends HttpServlet {
         System.out.println("action = " + action);
 
         if (action.equals("/index")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/index.jsp");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
+        } else if (action.equals("/register")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
+        }  else if (action.equals("/login")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
+        }  else if (action.equals("/userChoice")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");
         } else {
             response.setContentType(CONTENT_TYPE_HTML);
-            response.sendError(HttpServletResponse.SC_BAD_GATEWAY);
+            response.sendError(HttpServletResponse.SC_NOT_FOUND);
         }
 
         if (dispatcher != null) {
