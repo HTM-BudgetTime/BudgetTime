@@ -35,12 +35,20 @@
 
     <br><br>
     <button id="newBlankRowHandler" class="btn btn-default">New Row</button>
+    <br/>
+    <br/>
+    <button id="submitEntries" class="btn btn-default">Submit Entries</button>
 </form>
 
 <script type="application/javascript">
 
     document.getElementById("newBlankRowHandler").addEventListener("click", function (e) {
         addRow("", "", 0);
+        e.preventDefault();
+    });
+
+    document.getElementById("submitEntries").addEventListener("click", function (e) {
+        submitEntries();
         e.preventDefault();
     });
 
@@ -76,6 +84,23 @@
             '                <td>\n' +
             '                    <input type="number" name="input1" id="firstInput" value="' + hours + '">\n' +
             '                </td>';
+    }
+
+
+    function submitEntries() {
+
+        fetch("doUpdateEntries", {
+            credentials: "same-origin",
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entries)
+        })
+            .then(value => {
+                console.info("value");
+            });
+
     }
 
 </script>

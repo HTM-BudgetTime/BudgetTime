@@ -57,6 +57,9 @@ public class MainServlet extends HttpServlet {
             writer.print("Username = " + username + "<br/>\n");
             writer.print("Password = " + password + "<br/>\n");
 
+        }else if (action.equals("/doUpdateEntries")) {
+            writer.print("Success!");
+
         } else if (action.equals("/userChoice")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");
         } else {
