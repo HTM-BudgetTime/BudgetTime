@@ -34,12 +34,15 @@
     </div>
 
     <br><br>
-    <button type="button" name="Add Extra Fields" id="newFields"> Add Extra Fields</button>
-    <input type="submit">
+    <button id="newBlankRowHandler" class="btn btn-default">New Row</button>
 </form>
-</div>
 
 <script type="application/javascript">
+
+    document.getElementById("newBlankRowHandler").addEventListener("click", function (e) {
+        addRow("", "", 0);
+        e.preventDefault();
+    });
 
     let entries = [];
 
@@ -52,6 +55,11 @@
 
     let rowsBody = document.getElementById("entriesRows");
     entries.forEach(entry => {
+        addRow(entry.category, entry.description, entry.hours);
+    });
+
+
+    function addRow(category, description, hours) {
         const newRow = rowsBody.insertRow(-1);
         newRow.innerHTML = '<td>\n' +
             '                    <select name="Categories" class="form-control">\n' +
@@ -63,13 +71,12 @@
             '                    </select>\n' +
             '                </td>\n' +
             '                <td>\n' +
-            '                    <input type="text" name="input1Type" id="input1Type" placeholder="Description" value="' + entry.description + '"/>\n' +
+            '                    <input type="text" name="input1Type" id="input1Type" placeholder="Description" value="' + description + '"/>\n' +
             '                </td>\n' +
             '                <td>\n' +
-            '                    <input type="number" name="input1" id="firstInput" value="' + entry.hours + '">\n' +
+            '                    <input type="number" name="input1" id="firstInput" value="' + hours + '">\n' +
             '                </td>';
-
-    });
+    }
 
 </script>
 
