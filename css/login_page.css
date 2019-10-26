@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 input[type=text],input[type=password],input[type=number], select, textarea {
+=======
+.body{background-image: url(../img/background.JPG);
+    background-size: auto;
+}
+
+input[type=text], select, textarea {
+>>>>>>> 4e1827c0fee2e408332ff036ae57444db6abf046
   width: 100%;
   padding: 12px;
   border: 1px solid #ccc;
