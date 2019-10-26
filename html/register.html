@@ -1,0 +1,90 @@
+<!Doctype html>
+<html lang ="en">
+
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width = device-width, initial-scale = 1">
+
+      <!-- Link to external CSS file -->
+      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../css/login_page.css">
+      <link rel="stylesheet" type="text/css" href="style.css">
+      <title> Welcome </title>
+
+      <!-- Links to external Ajax, jQuery and Bootstrap libraries -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+      <script>
+        // Get the modal
+        var modal = document.getElementById('id01');
+
+        // When the user clicks anywhere outside of the modal, close it
+        window.onclick = function(event) {
+          if (event.target == modal) {
+            modal.style.display = "none";
+          }
+        }
+      </script>
+
+    </head>
+
+  <body class="body">
+
+      <!-- Header above navigation bar -->
+      <div class="jumbotron text-center" style="margin-bottom:0; background-image: url(../img/header-background.jpg) ; background-size: cover;  height: 200px">
+      </div>
+
+
+      <!-- Navigation Bar -->
+      <nav class="navbar navbar-dark navbar-inverse">
+          <div class="container-fluid">
+
+        <!-- Logo -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="index.html" class="navbar-brand">BudgetTime</a>
+        </div>
+
+        <!-- Menu Items -->
+        <div class="collapse navbar-collapse" id="mainNavBar" style="color: white;">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="index.html">Home</a></li>
+                <li><a href="login.html">Login Page</a></li>
+                <li><a href="register.html">Create an Account</a></li>
+                <li><a href="#">...</a></li>
+                <li><a href="#">...</a></li>
+            </ul>
+         </div>
+        </div>
+      </nav>
+
+<br />
+
+        <!-- Login Username and Password Boxes -->
+            <div class="container">
+              <form action="#" method="POST">
+                    <label for="Username">Username</label>
+                    <input type="text" id="Username" name="username" placeholder="Your Username...">
+                    <label for="Password">Password</label>
+                    <input type="text" id="Password" name="Password" placeholder="Your Password...">
+                    <input type="submit" value="Submit">
+                </form>
+            </div>
+<br />
+
+    <!-- Footer of the website -->
+    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+        <div class="container text-center">
+            <small>Copyright &copy; BudgetTime</small>
+            <!-- Social Media Icons in footer -->
+          </div>
+    </footer>
+
+    </body>
+</html>
