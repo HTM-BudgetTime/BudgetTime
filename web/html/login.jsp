@@ -1,21 +1,9 @@
-<!Doctype html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta content="IE=edge" http-equiv="X-UA-Compatible">
-    <meta content="width = device-width, initial-scale = 1" name="viewport">
-
-    <!-- Link to external CSS file -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="../css/login_page.css" rel="stylesheet" type="text/css">
-    <link href="style.css" rel="stylesheet" type="text/css">
-    <title> Login </title>
-
-    <!-- Links to external Ajax, jQuery and Bootstrap libraries -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-    <script src="../js/project.js" type="text/javascript"></script>
+    <jsp:include page="includes/htmlHead.include.jsp"/>
+    <title> Login Page 2 </title>
 </head>
 
 <body class="body">
@@ -27,27 +15,7 @@
 
 <!-- Navigation Bar -->
 <nav class="navbar navbar-dark navbar-inverse">
-    <div class="container-fluid">
-
-        <!-- Logo -->
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-target="#mainNavBar" data-toggle="collapse" type="button">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="index">BudgetTime</a>
-        </div>
-
-        <!-- Menu Items -->
-        <div class="collapse navbar-collapse" id="mainNavBar" style="color: white;">
-            <ul class="nav navbar-nav">
-                <li class="active"><a href="index">Home</a></li>
-                <li><a href="login">Login Page</a></li>
-                <li><a href="register">Create an Account</a></li>
-            </ul>
-        </div>
-    </div>
+    <jsp:include page="includes/navigation.include.jsp"/>
 </nav>
 
 <br/>

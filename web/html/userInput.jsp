@@ -1,10 +1,12 @@
 <!doctype html>
 <html lang="en">
-<head>
 
-    <meta charset="utf-8">
-    <meta content="width=device-width, initial-scale=1" name="viewport">
+<head>
+    <jsp:include page="includes/htmlHead.include.jsp"/>
+
     <title>Input</title>
+
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -186,29 +188,10 @@
 </div>
 
 
-<!-- Navigation Bar -->
 <nav class="navbar navbar-dark navbar-inverse">
-    <div class="container-fluid">
-
-        <!-- Logo -->
-        <div class="navbar-header">
-            <button class="navbar-toggle" data-target="#mainNavBar" data-toggle="collapse" type="button">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="UserOutput">FName LName</a>
-        </div>
-
-        <!-- Menu Items -->
-        <div class="collapse navbar-collapse" id="mainNavBar" style="color: white;">
-            <ul class="nav navbar-nav">
-                <li><a href="UserInput">Input</a></li>
-                <li><a href="UserOutput">Output</a></li>
-            </ul>
-        </div>
-    </div>
+    <jsp:include page="includes/navigation.include.jsp"/>
 </nav>
+
 <br/>
 
 <div class="container-fluid">
