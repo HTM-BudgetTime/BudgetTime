@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: howelrtc
@@ -13,5 +14,7 @@
 <body>
 <h1>Test content</h1>
 <p><a href="http://localhost:8080/BudgetTime/main/index">http://localhost:8080/BudgetTime/main/index</a></p>
+
+<c:redirect url="main/index"/>
 </body>
 </html>

@@ -18,8 +18,6 @@
 </nav>
 
 <br/>
-
-
 <br/>
 
 <!-- Footer of the website -->
