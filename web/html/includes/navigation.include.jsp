@@ -29,9 +29,11 @@
             </c:choose>
         </ul>
 
-        <c:when test="${sessionScope.isLoggedIn}">
-            <p class="navbar-text navbar-right">Signed in as ${sessionScope.personal_name} ${sessionScope.family_name} (${sessionScope.username}) <a href="logout" class="navbar-link">logout</a></p>
-        </c:when>
+        <c:choose>
+            <c:when test="${sessionScope.isLoggedIn}">
+                <p class="navbar-text navbar-right">Signed in as ${sessionScope.personal_name} ${sessionScope.family_name} (${sessionScope.username}) <a href="logout" class="navbar-link">logout</a></p>
+            </c:when>
+        </c:choose>
 
     </div>
 </div>

@@ -6,9 +6,7 @@ import java.sql.SQLException;
 
 public class Database {
 
-
-    public Database() {
-    }
+    public Database() {}
 
     public Connection getConnection() throws SQLException {
         String dbUri      = System.getenv("BT_DB_URI");
