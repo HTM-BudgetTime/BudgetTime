@@ -1,54 +1,54 @@
 <!Doctype html>
-<html lang ="en">
+<html lang="en">
 
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width = device-width, initial-scale = 1">
+<head>
+    <meta charset="UTF-8">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width = device-width, initial-scale = 1" name="viewport">
 
-      <!-- Link to external CSS file -->
-      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="../css/login_page.css">
-      <link rel="stylesheet" type="text/css" href="style.css">
-      <title> Welcome </title>
+    <!-- Link to external CSS file -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="../css/login_page.css" rel="stylesheet" type="text/css">
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <title> Welcome </title>
 
-      <!-- Links to external Ajax, jQuery and Bootstrap libraries -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Links to external Ajax, jQuery and Bootstrap libraries -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-      <script>
+    <script>
         // Get the modal
         var modal = document.getElementById('id01');
 
         // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function(event) {
-          if (event.target == modal) {
-            modal.style.display = "none";
-          }
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
         }
-      </script>
+    </script>
 
-    </head>
+</head>
 
-  <body class="body">
+<body class="body">
 
-      <!-- Header above navigation bar -->
-      <div class="jumbotron text-center" style="margin-bottom:0; background-image: url(../img/header-background.jpg) ; background-size: cover;  height: 200px">
-      </div>
+<!-- Header above navigation bar -->
+<div class="jumbotron text-center" style="margin-bottom:0; background-image: url(../img/header-background.jpg) ; background-size: cover;  height: 200px">
+</div>
 
 
-      <!-- Navigation Bar -->
-      <nav class="navbar navbar-dark navbar-inverse">
-          <div class="container-fluid">
+<!-- Navigation Bar -->
+<nav class="navbar navbar-dark navbar-inverse">
+    <div class="container-fluid">
 
         <!-- Logo -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+            <button class="navbar-toggle" data-target="#mainNavBar" data-toggle="collapse" type="button">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a href="index.html" class="navbar-brand">BudgetTime</a>
+            <a class="navbar-brand" href="index.html">BudgetTime</a>
         </div>
 
         <!-- Menu Items -->
@@ -58,33 +58,33 @@
                 <li><a href="login.html">Login Page</a></li>
                 <li><a href="register.html">Create an Account</a></li>
             </ul>
-         </div>
         </div>
-      </nav>
+    </div>
+</nav>
 
-<br />
+<br/>
 
-        <!-- Login Username and Password Boxes -->
-            <div class="container">
-              <form action="#" method="POST">
-                    <label for="Username">Username</label>
-                    <input type="text" id="username" name="username" placeholder="Enter Username...">
-                    <label for="usrpassword">Password</label>
-                    <input type="password" id="usrpassword" name="Password" placeholder="Enter Password...">
-                    <input type="submit" value="Create an account"> <br>
-                    <input type = "radio" name = "catVdog" value = "dog" checked> Dog </br>
-                    <input type = "radio" name = "catVdog" value = "cat"> Cat
-                </form>
-            </div>
-<br />
+<!-- Login Username and Password Boxes -->
+<div class="container">
+    <form action="#" method="POST">
+        <label for="Username">Username</label>
+        <input id="username" name="username" placeholder="Enter Username..." type="text">
+        <label for="usrpassword">Password</label>
+        <input id="usrpassword" name="Password" placeholder="Enter Password..." type="password">
+        <input type="submit" value="Create an account"> <br>
+        <input checked name="catVdog" type="radio" value="dog"> Dog </br>
+        <input name="catVdog" type="radio" value="cat"> Cat
+    </form>
+</div>
+<br/>
 
-    <!-- Footer of the website -->
-    <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
-        <div class="container text-center">
-            <small>Copyright &copy; BudgetTime</small>
-            <!-- Social Media Icons in footer -->
-          </div>
-    </footer>
+<!-- Footer of the website -->
+<footer class="py-4 bg-dark text-white-50" id="sticky-footer">
+    <div class="container text-center">
+        <small>Copyright &copy; BudgetTime</small>
+        <!-- Social Media Icons in footer -->
+    </div>
+</footer>
 
-    </body>
+</body>
 </html>
