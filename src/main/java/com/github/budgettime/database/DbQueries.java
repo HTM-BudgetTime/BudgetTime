@@ -20,7 +20,19 @@ public class DbQueries {
         this.connection = connection;
     }
 
-    public List<BudgetEntry> getBudgetEntriesForBudgetId(final String budgetId) throws SQLException {
+    public void addBudgetEntry(final String category, final String description, final String hours_budgeted) throws SQLException {
+        final PreparedStatement ps = connection.prepareStatement("INSERT INTO budget_entries (category, description, duration) VALUES ((?),(?),(?))");
+        ps.setString(1, category);
+        ps.setString(2, description);
+        if(hours_budgeted == null) {
+            ps.setInt(3, 0);
+        } else {
+            ps.setInt(3, Integer.parseInt(hours_budgeted, 10));
+        }
+        ps.executeUpdate();
+    }
+
+    public List<BudgetEntry> getBudgetEntriesForBudgetId(final int budgetId) throws SQLException {
         final PreparedStatement ps = connection
                 .prepareStatement(
                         "SELECT parent_budget_id, budget_entry_id, category, description, duration\n" +
@@ -28,16 +40,17 @@ public class DbQueries {
                         "\n" +
                         "WHERE budget_entries.parent_budget_id = (?) \n" +
                         "");
-        ps.setString(1, budgetId);
+        ps.setInt(1, budgetId);
 
         List<BudgetEntry> budgetEntries = new ArrayList<>();
 
         final ResultSet rs = ps.executeQuery();
         while (rs.next()) {
-            int    dbBudgetId  = rs.getInt("budget_id");
-            String category    = rs.getString("category");
-            String description = rs.getString("description");
-            float  duration    = rs.getFloat("duration");
+            int    dbBudgetId      = rs.getInt("parent_budget_id");
+            int    dbBudgetEntryId = rs.getInt("budget_entry_id");
+            String category        = rs.getString("category");
+            String description     = rs.getString("description");
+            float  duration        = rs.getFloat("duration");
 
             BudgetEntry budgetEntry = new BudgetEntry(category, description, duration);
             budgetEntries.add(budgetEntry);
@@ -87,6 +100,7 @@ public class DbQueries {
 
         return Optional.empty();
     }
+    // entries.push({entry_id: 2, category: "Fun", description: "Cinema", hours_budgeted: 3, hours_logged: 0});
 
     public boolean isUserInDb(final String username, final String password) throws SQLException {
         final PreparedStatement ps = connection.prepareStatement("SELECT COUNT(*) as count FROM accounts WHERE username=(?) AND password=(?) LIMIT 1");

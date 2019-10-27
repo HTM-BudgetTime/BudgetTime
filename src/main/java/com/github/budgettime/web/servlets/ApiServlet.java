@@ -1,6 +1,9 @@
 package com.github.budgettime.web.servlets;
 
 import com.github.budgettime.TestUtil;
+import com.github.budgettime.database.Database;
+import com.github.budgettime.database.DbQueries;
+import com.github.budgettime.model.Budget;
 import com.github.budgettime.model.BudgetEntry;
 import com.github.budgettime.model.BudgetPeriod;
 import com.github.budgettime.model.User;
@@ -16,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
@@ -66,6 +71,23 @@ public class ApiServlet extends HttpServlet {
             output.put("users", data);
 
             writer.print(output.toString(2));
+
+        } else if (action.equals("/budgetContent")) {
+            int      budgetId = 1;
+            Database database = new Database();
+            try (Connection connection = database.getConnection()) {
+                DbQueries               dbQueries = new DbQueries(connection);
+                final List<BudgetEntry> entries   = dbQueries.getBudgetEntriesForBudgetId(budgetId);
+
+                Budget budget = new Budget(budgetId);
+                entries.forEach(budget::addEntry);
+
+                writer.println(budget.toJsonArray());
+
+            } catch (SQLException e) {
+                writer.println("ERROR! <br/><br/>\n\n");
+                writer.println(e.getMessage());
+            }
 
         } else if (action.equals("/budgetData")) {
             String username       = request.getParameter("username");

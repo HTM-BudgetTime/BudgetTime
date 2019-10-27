@@ -94,6 +94,32 @@ public class MainServlet extends HttpServlet {
             }
 
 
+        } else if (action.equals("/doUpdateEntry")) {
+
+            String entryId       = request.getParameter("entry_id");
+            String category      = request.getParameter("category");
+            String description   = request.getParameter("description");
+            String hoursBudgeted = request.getParameter("hours_budgeted");
+            String hoursLogged   = request.getParameter("hours_logged");
+
+            System.out.println(request.getParameterMap());
+
+            try {
+                Database   database   = new Database();
+                Connection connection = database.getConnection();
+
+                DbQueries dbQueries = new DbQueries(connection);
+                dbQueries.addBudgetEntry(category, description, hoursBudgeted);
+
+            } catch (SQLException e) {
+                writer.println("Database error -- try again later!");
+                writer.println("<br>");
+                writer.println("<br>");
+                writer.println(e.getMessage());
+                e.printStackTrace();
+            }
+
+
         } else if (action.equals("/doUpdateEntries")) {
             writer.print("Success!");
 
