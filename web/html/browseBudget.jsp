@@ -45,13 +45,13 @@
             </table>
 
 
-
         </div>
     </div>
 
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            <button id="newRowButton">New Row</button>
             <button id="saveButton">Save</button>
         </div>
     </div>
@@ -70,16 +70,18 @@
             }
         }
     )
-        .then(value => { return value.json(); })
-    .then(value => {
-        console.info("value", value);
-        for (let i = 0; i < value.length; i++) {
-            const entry = value[i];
-            entries.push(entry);
-        }
+        .then(value => {
+            return value.json();
+        })
+        .then(value => {
+            console.info("value", value);
+            for (let i = 0; i < value.length; i++) {
+                const entry = value[i];
+                entries.push(entry);
+            }
 
-        drawEntriesTableRow(document.getElementById("entriesContainer"), entries);
-    });
+            drawEntriesTableRow(document.getElementById("entriesContainer"), entries);
+        });
 
 
     // entries.push({entry_id: 0, category: "Work", description: "Working Hours", hours_budgeted: 40, hours_logged: 0});
@@ -102,13 +104,13 @@
     function drawEntriesTableRow(containerElem, entries) {
         containerElem.innerHTML = "";
         entries.forEach(entry => {
-            const newElem = entryToTrElem(entry);
+            const newElem = entryToTrElem(entry, false);
             newElem.setAttribute("id", "row_" + entry.entry_id);
             containerElem.appendChild(newElem);
         })
     }
 
-    function entryToTrElem(entry) {
+    function entryToTrElem(entry, isInput) {
         const newElem = document.createElement("tr");
 
         entry.hours_logged = entry.hours_logged || 0;
@@ -124,16 +126,24 @@
 
         newElem.innerHTML = "" +
             "<td class='budget-category-name align-middle'>" +
-            "    <input type='text' class='form-control' value='" + entry.category + "'>" +
+            (isInput ? "    <input type='text' id='categoryInput' class='form-control' value='" : "") +
+            entry.category +
+            (isInput ? "'>" : "")+
             "</td>" +
             "<td class='budget-category-description align-middle'>" +
-            "    <input type='text' class='form-control' value='" + entry.description + "'>" +
+            (isInput ? "    <input type='text' id='descriptionInput' class='form-control' value='" : "") +
+            entry.description +
+            (isInput ? "'>" : "") +
             "</td>" +
             "<td class='budget-category-hours_budgeted align-middle'>" +
-            "    <input type='number' class='form-control' value='" + entry.hours_budgeted + "'>" +
+            (isInput ? "    <input type='number' id='hoursInput' class='form-control' value='" : "") +
+            entry.hours_budgeted +
+            (isInput ? "'>" : "") +
             "</td>" +
             "<td class='budget-category-hours_logged align-middle'>" +
-            "    <input type='number' class='form-control' value='" + entry.hours_logged + "'>" +
+            (isInput ? "    <input type='number' id='loggedInput' class='form-control' value='" : "")+
+            entry.hours_logged +
+            (isInput ? "'>" : "") +
             "</td>" +
             "<td class='budget-category-hours_remaining align-middle'>" + (entry.hours_budgeted - entry.hours_logged) + "</td>" +
             "<td class='budget-category-actions align-middle'>" +
@@ -147,6 +157,12 @@
     }
 
 
+    function addNewRow() {
+        let containerElem = document.getElementById("entriesContainer");
+        let newElem = entryToTrElem({category: "", description: "", hours_budgeted: 0, hours_logged: 0}, true);
+        containerElem.appendChild(newElem);
+    }
+
     $("#entriesContainer").on('click', 'tr a.save', function (event) {
         const currentTarget = event.currentTarget;
         console.info('currentTarget', currentTarget);
@@ -155,9 +171,22 @@
     });
 
 
+    $('#newRowButton').on('click', function () {
+        console.info('new row');
+        addNewRow();
+    });
+
     $('#saveButton').on('click', function () {
-        for(let i=0; i<entries.length; i++) {
-            let entry = entries[i];
+        let category = $("#categoryInput").val();
+        let description = $("#descriptionInput").val();
+        let hours = $("#hoursInput").val();
+
+        let entry = {
+            category: category,
+            description: description,
+            hours: hours
+        };
+
             console.info('entry', entry);
             fetch("doUpdateEntry", {
                 credentials: "same-origin",
@@ -170,7 +199,7 @@
                 .then(value => {
                     console.info("value");
                 });
-        }
+
     });
 
 </script>
