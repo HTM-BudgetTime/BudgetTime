@@ -44,16 +44,16 @@ public class MainServlet extends HttpServlet {
         System.out.println("action = " + action);
 
         if (action.equals("/index")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/index.jsp");
         } else if (action.equals("/register")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/register.jsp");
         } else if (action.equals("/mainData")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/mainData.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/mainData.jsp");
         } else if (action.equals("/login")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/login.jsp");
         } else if (action.equals("/doLogout")) {
             session.invalidate();
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/loggedOut.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/loggedOut.jsp");
         } else if (action.equals("/doLogon")) {
             String username = request.getParameter("username");
             String password = request.getParameter("Password");
@@ -70,7 +70,7 @@ public class MainServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/main/index");
                 } else {
                     // Throw away the session if not logged in
-                    // TODO: Better to track e.g. number of incorrect attempts
+                    // TODO: Better to track e.g. number of incorrect attempts?
 //                    session = request.getSession();
                     session.invalidate();
                     response.sendRedirect(request.getContextPath() + "/main/login");
@@ -90,7 +90,9 @@ public class MainServlet extends HttpServlet {
             writer.print("Success!");
 
         } else if (action.equals("/userChoice")) {
-            dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.jsp");
+        } else if (action.equals("/userOutput")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/userOutput.jsp");
         } else {
             response.setContentType(ServletUtil.CONTENT_TYPE_HTML);
             response.sendError(HttpServletResponse.SC_NOT_FOUND);
