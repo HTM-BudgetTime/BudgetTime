@@ -30,7 +30,7 @@ public class BudgetEntry implements Jsonable {
         JSONObject jsonObject = new JSONObject();
         jsonObject.put("category", getCategory());
         jsonObject.put("description", getDescription());
-        jsonObject.put("hours", getDuration());
+        jsonObject.put("hours_budgeted", getDuration());
 
         return jsonObject;
     }

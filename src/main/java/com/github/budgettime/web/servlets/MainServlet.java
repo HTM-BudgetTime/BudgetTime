@@ -52,6 +52,8 @@ public class MainServlet extends HttpServlet {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/mainData.jsp");
         } else if (action.equals("/login")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/login.jsp");
+        } else if (action.equals("/browseBudget")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/browseBudget.jsp");
         } else if (action.equals("/doLogout")) {
             session.invalidate();
             dispatcher = this.getServletContext().getRequestDispatcher("/html/loggedOut.jsp");

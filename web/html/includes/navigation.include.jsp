@@ -17,6 +17,7 @@
             <c:choose>
                 <c:when test="${sessionScope.isLoggedIn}">
                     <li class="active"><a href="index">Home</a></li>
+                    <li><a href="browseBudget">Browse Budget</a></li>
                     <li><a href="userChoice">User Choice</a></li>
                     <li><a href="userInput">User Input</a></li>
                     <li><a href="userOutput">User Output</a></li>
