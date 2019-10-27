@@ -5,6 +5,7 @@ import com.github.budgettime.model.BudgetEntry;
 import com.github.budgettime.model.BudgetPeriod;
 import com.github.budgettime.model.User;
 import com.github.budgettime.web.ServletUtil;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import javax.servlet.RequestDispatcher;
@@ -54,24 +55,15 @@ public class ApiServlet extends HttpServlet {
             users.add(user1);
             users.add(user2);
 
-            List<String> usersJsonObject = new ArrayList<>();
-            for (User user : users) {
-                StringBuilder sb = new StringBuilder();
-                sb.append("{\n");
-                sb.append("    'userId': '" + user.getUserId() + "',");
-                sb.append("    'personalName': '" + user.getPersonalName() + "',");
-                sb.append("    'familyName': '" + user.getFamilyName() + "'");
-                sb.append("}");
+            JSONArray data = new JSONArray();
+            users.forEach(user -> {
+                data.put(user.toJsonObject());
+            });
 
-                usersJsonObject.add(sb.toString());
-            }
+            JSONObject output = new JSONObject();
+            output.put("users", data);
 
-            final String output = "{'users': " +
-                                  '[' +
-                                  String.join(",\n", usersJsonObject) +
-                                  ']' +
-                                  '}';
-            writer.print(output);
+            writer.print(output.toString(2));
 
         } else if (action.equals("/budgetData")) {
             String username       = request.getParameter("username");
