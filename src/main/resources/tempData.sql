@@ -16,6 +16,7 @@ INSERT INTO `accounts` (`username`, `password`, `personal_name`, `family_name`) 
 CREATE TABLE IF NOT EXISTS `budgets` (
     budget_id int auto_increment,
     owner_username varchar(50) not null,
+    description varchar(1024) not null,
     PRIMARY KEY (budget_id)
 );
 
