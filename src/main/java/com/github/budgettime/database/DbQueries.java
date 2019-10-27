@@ -106,8 +106,11 @@ public class DbQueries {
     }
 
     public void createUserInDb(final String username, final String password, final String personal_name, final String family_name) throws SQLException {
-        final PreparedStatement ps = connection.prepareStatement("INSERT INTO accounts (username, password, personal_name, family_name) VALUES ( username, password, personal_name, family_name)");
-
+        final PreparedStatement ps = connection.prepareStatement("INSERT INTO accounts (username, password, personal_name, family_name) VALUES ((?),(?),(?),(?))");
+        ps.setString(1, username);
+        ps.setString(2, password);
+        ps.setString(3, personal_name);
+        ps.setString(4, family_name);
          ps.executeUpdate();
     }
 }
