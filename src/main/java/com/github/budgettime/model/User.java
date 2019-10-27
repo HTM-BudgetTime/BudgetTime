@@ -1,6 +1,9 @@
 package com.github.budgettime.model;
 
-public class User {
+import com.github.budgettime.Jsonable;
+import org.json.JSONObject;
+
+public class User implements Jsonable {
     private String personalName;
     private String familyName;
     private String userId;
@@ -22,5 +25,14 @@ public class User {
 
     public String getUserId() {
         return userId;
+    }
+
+    public JSONObject toJsonObject() {
+        JSONObject jsonObject = new JSONObject();
+        jsonObject.put("personal_name", getPersonalName());
+        jsonObject.put("family_name", getFamilyName());
+        jsonObject.put("user_id", getUserId());
+
+        return jsonObject;
     }
 }

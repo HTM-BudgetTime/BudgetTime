@@ -46,6 +46,8 @@ public class MainServlet extends HttpServlet {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
         } else if (action.equals("/register")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/register.html");
+        } else if (action.equals("/mainData")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/mainData.html");
         } else if (action.equals("/login")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/login.html");
         } else if (action.equals("/doLogon")) {
@@ -54,6 +56,9 @@ public class MainServlet extends HttpServlet {
 
             writer.print("Username = " + username + "<br/>\n");
             writer.print("Password = " + password + "<br/>\n");
+
+        } else if (action.equals("/doUpdateEntries")) {
+            writer.print("Success!");
 
         } else if (action.equals("/userChoice")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.html");

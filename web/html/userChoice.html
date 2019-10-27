@@ -1,39 +1,109 @@
-<!Doctype html>
-<html lang ="en">
+<!doctype html>
+<html lang="en">
 
-  <head>
-      <meta charset="UTF-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <meta name="viewport" content="width = device-width, initial-scale = 1">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
 
-      <!-- Link to external CSS file -->
-      <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="../css/login_page.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/login_page.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
-      <script>
-        
-      </script>
-    </head>
+</head>
 <body class="body">
 
-  <div class="container">
-    <form class="" action="#" method="post">
-      <label for="hoursToCommit"><b>Hours to Commit</b></label>
-      <input type="number" name="hoursToCommit" value="0">
+<form class="" action="#" method="post">
+    <div class="container">
 
-      <label for="usrSleep"><b>Sleep</b></label>
-      <input type="number" name="sleep" id="usrSleep" value="0">
+        <table class="table table-bordered table-hover" style="background-color: #eee;">
+            <thead>
+            <tr>
+                <th scope="col">Category</th>
+                <th scope="col">Type</th>
+                <th scope="col">Hours</th>
+            </tr>
 
-      <label for="usrStudy"><b>Study</b></label>
-      <input type="number" name="study" id="usrStudy" value="0">
+            </thead>
+            <tbody id="entriesRows">
+            </tbody>
+        </table>
 
-      <label for="entertainment"><b>Entertainment</b></label>
-      <input type="number" name="ntertainment" id="usrEntertainment" value="0">
-      <button type="button" name="Add Extra Fields"> Add Extra Fields </button>
-    </form>
-  </div>
+    </div>
+
+    <br><br>
+    <button id="newBlankRowHandler" class="btn btn-default">New Row</button>
+    <br/>
+    <br/>
+    <button id="submitEntries" class="btn btn-default">Submit Entries</button>
+</form>
+
+<script type="application/javascript">
+
+    document.getElementById("newBlankRowHandler").addEventListener("click", function (e) {
+        addRow("", "", 0);
+        e.preventDefault();
+    });
+
+    document.getElementById("submitEntries").addEventListener("click", function (e) {
+        submitEntries();
+        e.preventDefault();
+    });
+
+    let entries = [];
+
+    entries.push({category: "Work", description: "Working Hours", hours: 40});
+    entries.push({category: "Work", description: "Commuting to/from work", hours: 5});
+    entries.push({category: "Fun", description: "Cinema", hours: 3});
+    entries.push({category: "Self Care", description: "Sleep", hours: 56});
+    entries.push({category: "Self Care", description: "Washing / morning routine", hours: 5});
+
+
+    let rowsBody = document.getElementById("entriesRows");
+    entries.forEach(entry => {
+        addRow(entry.category, entry.description, entry.hours);
+    });
+
+
+    function addRow(category, description, hours) {
+        const newRow = rowsBody.insertRow(-1);
+        newRow.innerHTML = '<td>\n' +
+            '                    <select name="Categories" class="form-control">\n' +
+            '                        <option value="Work">Work</option>\n' +
+            '                        <option value="Education">Education</option>\n' +
+            '                        <option value="Entertainment">Entertainment</option>\n' +
+            '                        <option value="Sleep">Sleep</option>\n' +
+            '                        <option value="Daily Errands">Daily Errands</option>\n' +
+            '                    </select>\n' +
+            '                </td>\n' +
+            '                <td>\n' +
+            '                    <input type="text" name="input1Type" id="input1Type" placeholder="Description" value="' + description + '"/>\n' +
+            '                </td>\n' +
+            '                <td>\n' +
+            '                    <input type="number" name="input1" id="firstInput" value="' + hours + '">\n' +
+            '                </td>';
+    }
+
+
+    function submitEntries() {
+
+        fetch("doUpdateEntries", {
+            credentials: "same-origin",
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(entries)
+        })
+            .then(value => {
+                console.info("value");
+            });
+
+    }
+
+</script>
 
 
 </body>
