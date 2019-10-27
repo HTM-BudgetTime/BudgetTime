@@ -1,7 +1,11 @@
 package com.github.budgettime.web.servlets;
 
+import com.github.budgettime.TestUtil;
+import com.github.budgettime.model.BudgetEntry;
+import com.github.budgettime.model.BudgetPeriod;
 import com.github.budgettime.model.User;
 import com.github.budgettime.web.ServletUtil;
+import org.json.JSONObject;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,7 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.lang.reflect.Array;
+import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +44,7 @@ public class ApiServlet extends HttpServlet {
         final String      action = request.getPathInfo();
         final PrintWriter writer = response.getWriter();
 
-        System.out.println("action = " + action);
+        System.out.println("action =  " + action);
 
         if (action.equals("/users")) {
             User user1 = new User("Steve", "Smith", "aaa-aaa-aaa");
@@ -61,15 +66,38 @@ public class ApiServlet extends HttpServlet {
                 usersJsonObject.add(sb.toString());
             }
 
-            StringBuilder output = new StringBuilder();
-            output.append("{'users': ");
-            output.append('[');
-            output.append(String.join(",\n", usersJsonObject));
-            output.append(']');
-            output.append('}');
+            final String output = "{'users': " +
+                                  '[' +
+                                  String.join(",\n", usersJsonObject) +
+                                  ']' +
+                                  '}';
+            writer.print(output);
 
-            writer.print(output.toString());
-//            dispatcher = this.getServletContext().getRequestDispatcher("/html/index.html");
+        } else if (action.equals("/budgetData")) {
+            String username       = request.getParameter("username");
+            String budgetId       = request.getParameter("budget_id");
+            String start_date     = request.getParameter("start_date");
+            String duration_weeks = request.getParameter("duration_weeks");
+
+
+            BudgetPeriod budgetPeriod = new BudgetPeriod(
+                    LocalDate.now(),
+                    LocalDate.now().minus(Period.ofWeeks(2))
+            );
+
+            for (int i = 0; i < 8; i++) {
+                BudgetEntry budgetEntry = TestUtil.randomBudgetEntry();
+                budgetPeriod.addEntry(budgetEntry);
+            }
+
+            JSONObject meta = new JSONObject();
+            meta.put("count", budgetPeriod.length());
+
+            JSONObject output = new JSONObject();
+            output.put("data", budgetPeriod.toJsonArray());
+            output.put("meta", meta);
+
+            writer.print(output.toString(2));
 
         } else {
             response.setContentType(ServletUtil.CONTENT_TYPE_HTML);
