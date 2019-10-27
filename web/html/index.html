@@ -15,7 +15,25 @@
       <!-- Links to external Ajax, jQuery and Bootstrap libraries -->
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-      <script type="text/javascript" src="../js/project.js"></script>
+      <script type="text/javascript">
+
+        $(document).ready(function() {
+            
+            //jQuery used for image text slides: 
+            $('.image-frame').hover(function(){
+          $('.image-caption',this).slideToggle('slow');
+             }, function(){
+              $('.image-caption',this).slideToggle('slow');
+                });
+        
+            //jQuery used to open links with class newtab in new windows:  
+            $('a.newtab').click(function(){
+                window.open(this.href);
+                return false;
+                });
+        });
+
+      </script>
     </head>
 
   <body class="body">
@@ -43,8 +61,8 @@
         <div class="collapse navbar-collapse" id="mainNavBar" style="color: white;">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index">Home</a></li>
-                <li><a href="login">Login Page</a></li>
-                <li><a href="register">Create an Account</a></li>
+                <li><a href="login.html">Login Page</a></li>
+                <li><a href="register.html">Create an Account</a></li>
             </ul>
          </div>
         </div>
@@ -52,6 +70,35 @@
 
 <br />
 
+      <div class = "container" style=" background-color: whitesmoke; padding: inherit; backface-visibility: hidden; padding-bottom: 30px;">
+      <div class="col-md-12">
+        <h1 style="text-align: center; font-family: sans-serif; font-size:5vw; padding-bottom: 10px; opacity: 1.0;"><b>Welcome to our Budget Timer</b></h1>
+      </div>
+        <div class="col-md-6">
+        <p style="font-size: 20px; font-family: sans-serif; padding-top: 20px; padding-bottom: 5px; opacity: 1.0;">
+        This website is used to represent a project from the 24 hour annual Hack the Midlands Hackathon. The Budget Timer is a web application used to organize your time throughout a weekly margin and calculate how much time your spending on various acivities in different categories. This app will keep you up to date with your weekly schedule as well as suggest any improvements and adjustments you can make to your routine to improve your wellbeing or achieve any goals you've set for yourself.</p>
+      </div>
+
+      <div class="col-md-1">
+      </div>
+
+      <div class="col-md-5">
+        <div class = "image-frame">
+        <a href="#"><img src="../img/home.jpg" alt="Image Time is Money" style="height: 200px; width: 440px;"></img></a>
+        <div class="image-caption" style="width: 440px;">
+        <h2>Time is Money</h2>
+        </div>
+      </div>
+    </br>
+        <p style="font-size: 20px; font-family: sans-serif; padding-top: 0px; padding-bottom: 0px; opacity: 1.0;">
+        If you've already created an account to our web application, <a href="login.html">please login here</a>.
+        </p>
+        <p style="font-size: 20px; font-family: sans-serif; padding-top: 0px; padding-bottom: 10px; opacity: 1.0;">
+        If you don't have an account on our web application, please <a href="register.html">create one here</a>.
+        </p>
+        
+      </div>
+      </div>
 
 <br />
 
