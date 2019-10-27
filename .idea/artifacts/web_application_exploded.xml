@@ -17,7 +17,6 @@
         </element>
       </element>
       <element id="javaee-facet-resources" facet="BudgetTime/web/Web" />
-      <element id="javaee-facet-resources" facet="BudgetTime/web/Web" />
     </root>
   </artifact>
 </component>
