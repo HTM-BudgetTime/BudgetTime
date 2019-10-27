@@ -22,7 +22,7 @@
 
 <!-- Login Username and Password Boxes -->
 <div class="container">
-    <form action="#" method="POST">
+    <form action="/BudgetTime/main/doRegister" method="POST">
         <label for="Username">Username</label>
         <input id="username" name="username" placeholder="Enter Username..." type="text">
         <label for="usrpassword">Password</label>

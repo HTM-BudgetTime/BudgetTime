@@ -26,8 +26,13 @@ public class DbQueries {
             }
         }
 
-        return false;
+       return  false;
+
     }
 
+    public void createUserInDb(final String username, final String password) throws SQLException {
+        final PreparedStatement ps = connection.prepareStatement("INSERT INTO accounts (username, password) VALUES (' username', ' password')");
 
+         ps.executeUpdate();
+    }
 }

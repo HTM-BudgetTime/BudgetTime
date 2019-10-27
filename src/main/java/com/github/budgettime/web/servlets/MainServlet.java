@@ -54,6 +54,25 @@ public class MainServlet extends HttpServlet {
         } else if (action.equals("/doLogout")) {
             session.invalidate();
             dispatcher = this.getServletContext().getRequestDispatcher("/html/loggedOut.jsp");
+        } else if (action.equals("/doRegister")) {
+            String username = request.getParameter("username");
+            String password = request.getParameter("Password");
+            try {
+                Database   database   = new Database();
+                Connection connection = database.getConnection();
+
+                DbQueries dbQueries = new DbQueries(connection);
+                dbQueries.createUserInDb(username, password);
+
+            } catch (SQLException e) {
+                writer.println("Database error -- try again later!");
+                writer.println("<br>");
+                writer.println("<br>");
+                writer.println(e.getMessage());
+                e.printStackTrace();
+            }
+
+
         } else if (action.equals("/doLogon")) {
             String username = request.getParameter("username");
             String password = request.getParameter("Password");
@@ -91,6 +110,8 @@ public class MainServlet extends HttpServlet {
 
         } else if (action.equals("/userChoice")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.jsp");
+        }   else if (action.equals("/userInput")) {
+                dispatcher = this.getServletContext().getRequestDispatcher("/html/userInput.jsp");
         } else if (action.equals("/userOutput")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userOutput.jsp");
         } else {
