@@ -66,6 +66,7 @@ public class MainServlet extends HttpServlet {
 
                 DbQueries dbQueries = new DbQueries(connection);
                 dbQueries.createUserInDb(username, password, personal_name, family_name );
+                response.sendRedirect(request.getContextPath() + "/main/index");
 
             } catch (SQLException e) {
                 writer.println("Database error -- try again later!");
