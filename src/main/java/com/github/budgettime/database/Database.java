@@ -15,6 +15,12 @@ public class Database {
         String dbUsername = System.getenv("BT_DB_USERNAME");
         String dbPassword = System.getenv("BT_DB_PASSWORD");
 
+        // load and register JDBC driver for MySQL
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
         Connection con = DriverManager.getConnection(dbUri, dbUsername, dbPassword);
         return con;
     }

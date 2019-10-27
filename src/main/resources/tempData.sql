@@ -4,11 +4,13 @@ USE `budget_time`;
 CREATE TABLE IF NOT EXISTS `accounts` (
   `username` varchar(50) NOT NULL,
   `password` varchar(255) NOT NULL,
+  `personal_name` varchar(255) NOT NULL,
+  `family_name` varchar(255) NOT NULL,
   PRIMARY KEY (username)
 ) ENGINE=InnoDB AUTO_INCREMENT=0 DEFAULT CHARSET=utf8;
 
-INSERT INTO `accounts` (`username`, `password`) VALUES ('test1', 'test1');
-INSERT INTO `accounts` (`username`, `password`) VALUES ('test2', 'test2');
+INSERT INTO `accounts` (`username`, `password`, `personal_name`, `family_name`) VALUES ('test1', 'test1', 'Steve', 'Smith');
+INSERT INTO `accounts` (`username`, `password`, `personal_name`, `family_name`) VALUES ('test2', 'test2', 'Jenny', 'Jones');
 
 
 CREATE TABLE IF NOT EXISTS `budgets` (

@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
@@ -40,6 +41,7 @@ public class ApiServlet extends HttpServlet {
     private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         response.setContentType(ServletUtil.CONTENT_TYPE_JSON);
 
+        HttpSession session = request.getSession();
         RequestDispatcher dispatcher = null;
 
         final String      action = request.getPathInfo();
