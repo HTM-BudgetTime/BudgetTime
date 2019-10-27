@@ -22,3 +22,17 @@ Environment Variables
 - `BT_DB_USER` - the BudgetTime database username
 - `BT_DB_PASSWORD` - the BudgetTime database password
 - `BT_DB_URI` - the BudgetTime connection string (e.g. `jdbc:mysql://<host>:<port>/<dbname>`)
+
+
+
+
+## Troubleshooting
+
+### No suitable driver found for JDBC MySQL
+Ensure that all artifacts have been added -- this occurs when the MySQL driver hasn't been included in the class path
+
+### Keystore file cannot be created
+This happens when the driver attempts to connect via SSL -- set use ssl to false (often defaults to REQUIRED) 
+
+
+
