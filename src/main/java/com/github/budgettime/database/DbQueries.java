@@ -105,8 +105,8 @@ public class DbQueries {
 
     }
 
-    public void createUserInDb(final String username, final String password) throws SQLException {
-        final PreparedStatement ps = connection.prepareStatement("INSERT INTO accounts (username, password) VALUES (' username', ' password')");
+    public void createUserInDb(final String username, final String password, final String personal_name, final String family_name) throws SQLException {
+        final PreparedStatement ps = connection.prepareStatement("INSERT INTO accounts (username, password, personal_name, family_name) VALUES ( username, password, personal_name, family_name)");
 
          ps.executeUpdate();
     }

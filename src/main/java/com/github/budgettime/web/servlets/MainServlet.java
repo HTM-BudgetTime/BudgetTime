@@ -58,12 +58,14 @@ public class MainServlet extends HttpServlet {
         } else if (action.equals("/doRegister")) {
             String username = request.getParameter("username");
             String password = request.getParameter("Password");
+            String personal_name = request.getParameter("personal_name");
+            String family_name = request.getParameter("family_name");
             try {
                 Database   database   = new Database();
                 Connection connection = database.getConnection();
 
                 DbQueries dbQueries = new DbQueries(connection);
-                dbQueries.createUserInDb(username, password);
+                dbQueries.createUserInDb(username, password, personal_name, family_name );
 
             } catch (SQLException e) {
                 writer.println("Database error -- try again later!");

@@ -27,9 +27,9 @@
         <input id="username" name="username" placeholder="Enter Username..." type="text">
         <label for="usrpassword">Password</label>
         <input id="usrpassword" name="Password" placeholder="Enter Password..." type="password">
+        <input id="personal_name" name="personal_name" placeholder="Enter your personal name..." type="text">
+        <input id="family_name" name="family_name" placeholder="Enter your family name..." type="password">
         <input type="submit" value="Create an account"> <br>
-        <input checked name="catVdog" type="radio" value="dog"> Dog </br>
-        <input name="catVdog" type="radio" value="cat"> Cat
     </form>
 </div>
 <br/>
