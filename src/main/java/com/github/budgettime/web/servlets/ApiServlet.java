@@ -41,7 +41,7 @@ public class ApiServlet extends HttpServlet {
     private void processRequest(final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException {
         response.setContentType(ServletUtil.CONTENT_TYPE_JSON);
 
-        HttpSession session = request.getSession();
+        HttpSession       session    = request.getSession();
         RequestDispatcher dispatcher = null;
 
         final String      action = request.getPathInfo();
@@ -50,8 +50,8 @@ public class ApiServlet extends HttpServlet {
         System.out.println("action =  " + action);
 
         if (action.equals("/users")) {
-            User user1 = new User("Steve", "Smith", "aaa-aaa-aaa");
-            User user2 = new User("Jenny", "Helen", "bbb-bbb-bbb");
+            User user1 = new User("aaa-aaa-aaa", "Steve", "Smith");
+            User user2 = new User("bbb-bbb-bbb", "Jenny", "Helen");
 
             List<User> users = new ArrayList<>();
             users.add(user1);

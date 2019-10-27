@@ -2,6 +2,7 @@ package com.github.budgettime.web.servlets;
 
 import com.github.budgettime.database.Database;
 import com.github.budgettime.database.DbQueries;
+import com.github.budgettime.model.User;
 import com.github.budgettime.web.ServletUtil;
 
 import javax.servlet.RequestDispatcher;
@@ -85,7 +86,12 @@ public class MainServlet extends HttpServlet {
 
                 if (isValidCredentials) {
                     session.setAttribute("isLoggedIn", true);
-                    session.setAttribute("username", username);
+
+                    User user = dbQueries.getUserFromUsername(username).get();
+                    session.setAttribute("username", user.getUsername());
+                    session.setAttribute("family_name", user.getFamilyName());
+                    session.setAttribute("personal_name", user.getPersonalName());
+
                     response.sendRedirect(request.getContextPath() + "/main/index");
                 } else {
                     // Throw away the session if not logged in
@@ -108,6 +114,8 @@ public class MainServlet extends HttpServlet {
         } else if (action.equals("/doUpdateEntries")) {
             writer.print("Success!");
 
+        } else if (action.equals("/userInput")) {
+            dispatcher = this.getServletContext().getRequestDispatcher("/html/userInput.jsp");
         } else if (action.equals("/userChoice")) {
             dispatcher = this.getServletContext().getRequestDispatcher("/html/userChoice.jsp");
         }   else if (action.equals("/userInput")) {

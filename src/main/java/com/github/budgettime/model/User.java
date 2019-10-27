@@ -9,7 +9,7 @@ public class User implements Jsonable {
     private String familyName;
 
 
-    public User(final String personalName, final String familyName, final String username) {
+    public User(final String username, final String personalName, final String familyName) {
         this.personalName = personalName;
         this.familyName = familyName;
         this.username = username;

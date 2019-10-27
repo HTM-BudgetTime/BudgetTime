@@ -20,7 +20,6 @@
                     <li><a href="userChoice">User Choice</a></li>
                     <li><a href="userInput">User Input</a></li>
                     <li><a href="userOutput">User Output</a></li>
-                    <li><a href="doLogout">Logout</a></li>
                 </c:when>
                 <c:otherwise>
                     <li class="active"><a href="index">Home</a></li>
@@ -29,5 +28,12 @@
                 </c:otherwise>
             </c:choose>
         </ul>
+
+        <c:choose>
+            <c:when test="${sessionScope.isLoggedIn}">
+                <p class="navbar-text navbar-right">Signed in as ${sessionScope.personal_name} ${sessionScope.family_name} (${sessionScope.username}) <a href="logout" class="navbar-link">logout</a></p>
+            </c:when>
+        </c:choose>
+
     </div>
 </div>
